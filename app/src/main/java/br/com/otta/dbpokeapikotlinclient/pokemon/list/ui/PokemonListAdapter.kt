@@ -1,5 +1,7 @@
 package br.com.otta.dbpokeapikotlinclient.pokemon.list.ui
 
+import android.app.PendingIntent.getActivity
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -63,7 +65,8 @@ class PokemonListAdapter(
             name.text = pokemonItem.pokemon.name
 
             itemView.setOnClickListener {
-                val call = RetrofitInitializer().pokemonDetailService().call(pokemonItem.pokemon.url)
+                mListener?.openDetailsActivity(pokemonItem.pokemon.url)
+                /*val call = RetrofitInitializer().pokemonDetailService().call(pokemonItem.pokemon.url)
 
                 call.enqueue(object : Callback<PokemonDetailResponse> {
                     override fun onFailure(call: Call<PokemonDetailResponse>, t: Throwable) {
@@ -75,7 +78,7 @@ class PokemonListAdapter(
                             Log.i("Pokemon response", it.toString())
                         }
                     }
-                })
+                })*/
             }
         }
     }

@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.otta.dbpokeapikotlinclient.R
+import br.com.otta.dbpokeapikotlinclient.pokemon.detail.model.PokemonDetailResponse
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonItem
 
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.ui.dummy.DummyContent
@@ -84,6 +85,7 @@ class PokemonListFragment : Fragment() {
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         fun onListFragmentInteraction(item: DummyItem?)
+        fun openDetailsActivity(pokemonDetail: String)
     }
 
     companion object {
