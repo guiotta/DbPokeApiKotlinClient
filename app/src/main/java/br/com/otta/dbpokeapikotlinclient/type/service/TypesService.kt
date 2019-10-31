@@ -1,4 +1,4 @@
-package br.com.otta.dbpokeapikotlinclient.pokemon
+package br.com.otta.dbpokeapikotlinclient.type.service
 
 import br.com.otta.dbpokeapikotlinclient.type.model.Type
 import br.com.otta.dbpokeapikotlinclient.type.model.TypeResponse

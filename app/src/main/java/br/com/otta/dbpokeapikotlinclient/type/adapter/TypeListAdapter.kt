@@ -28,7 +28,7 @@ class TypeListAdapter(private val types: List<Type>, private val context: Contex
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(type: Type) {
-            val name = itemView.type_name_item
+            val name = itemView.type_name_item1
 
             name.text = type.name
         }

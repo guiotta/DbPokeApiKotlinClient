@@ -1,6 +1,6 @@
 package br.com.otta.dbpokeapikotlinclient.configuration
 
-import br.com.otta.dbpokeapikotlinclient.pokemon.TypesService
+import br.com.otta.dbpokeapikotlinclient.type.service.TypesService
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 
