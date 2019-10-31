@@ -1,12 +1,12 @@
-package br.com.otta.dbpokeapikotlinclient
+package br.com.otta.dbpokeapikotlinclient.type.adapter
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import br.com.otta.dbpokeapikotlinclient.PokemonTypeListFragment.OnListFragmentInteractionListener
+import br.com.otta.dbpokeapikotlinclient.type.ui.PokemonTypeListFragment.OnListFragmentInteractionListener
+import br.com.otta.dbpokeapikotlinclient.R
 import br.com.otta.dbpokeapikotlinclient.dummy.DummyContent.DummyItem
 import br.com.otta.dbpokeapikotlinclient.type.model.Type
 
@@ -28,12 +28,12 @@ class PokemonTypeListAdapter(private val types: List<Type>, private val mListene
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonTypeListAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_type, parent, false)
-        return PokemonTypeListAdapter.ViewHolder(view)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: PokemonTypeListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val type = types[position]
         holder?.let {
             it.bindView(type)

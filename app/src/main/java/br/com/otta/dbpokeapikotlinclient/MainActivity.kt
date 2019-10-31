@@ -2,14 +2,13 @@ package br.com.otta.dbpokeapikotlinclient
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
 import android.view.View
 import br.com.otta.dbpokeapikotlinclient.configuration.RetrofitInitializer
 import br.com.otta.dbpokeapikotlinclient.dummy.DummyContent
-import br.com.otta.dbpokeapikotlinclient.type.adapter.TypeListAdapter
 import br.com.otta.dbpokeapikotlinclient.type.model.Type
 import br.com.otta.dbpokeapikotlinclient.type.model.TypeResponse
+import br.com.otta.dbpokeapikotlinclient.type.ui.PokemonTypeListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
