@@ -86,7 +86,7 @@ class PokemonTypeListFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: ArrayList<PokemonItem>)
+        fun updateFragmentContent(item: ArrayList<PokemonItem>)
     }
 
     companion object {

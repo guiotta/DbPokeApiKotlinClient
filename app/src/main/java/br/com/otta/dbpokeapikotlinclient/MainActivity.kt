@@ -18,15 +18,17 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity(), PokemonTypeListFragment.OnListFragmentInteractionListener,
     PokemonListFragment.OnListFragmentInteractionListener {
+    val BACK_STACK_TAG: String = "pokemonListTag"
+
     override fun onListFragmentInteraction(item: DummyContent.DummyItem?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onListFragmentInteraction(item: ArrayList<PokemonItem>) {
+    override fun updateFragmentContent(item: ArrayList<PokemonItem>) {
         supportFragmentManager
             .beginTransaction()
             .add(R.id.main_fragment, PokemonListFragment.newInstance(1, item))
-            .addToBackStack("a")
+            .addToBackStack(BACK_STACK_TAG)
             .commit()
     }
 

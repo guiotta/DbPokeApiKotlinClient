@@ -12,7 +12,6 @@ import br.com.otta.dbpokeapikotlinclient.configuration.RetrofitInitializer
 import br.com.otta.dbpokeapikotlinclient.dummy.DummyContent.DummyItem
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonListResponse
 import br.com.otta.dbpokeapikotlinclient.type.model.Type
-import br.com.otta.dbpokeapikotlinclient.type.ui.PokemonTypeListFragment
 
 import kotlinx.android.synthetic.main.fragment_type.view.*
 import retrofit2.Call
@@ -31,7 +30,7 @@ class PokemonTypeListAdapter(private val types: List<Type>, private val mListene
     init {
         mOnClickListener = View.OnClickListener { v ->
             //val item = v.tag as DummyItem
-            //mListener?.onListFragmentInteraction(item)
+            //mListener?.updateFragmentContent(item)
         }
     }
 
@@ -67,7 +66,7 @@ class PokemonTypeListAdapter(private val types: List<Type>, private val mListene
                             response?.body()?.let {
                                 Log.i("Pokemon response", it.toString())
                                 val pokemonListResponse = it.pokemon;
-                                mListener?.onListFragmentInteraction(pokemonListResponse)
+                                mListener?.updateFragmentContent(pokemonListResponse)
                             }
                         }
                     }
