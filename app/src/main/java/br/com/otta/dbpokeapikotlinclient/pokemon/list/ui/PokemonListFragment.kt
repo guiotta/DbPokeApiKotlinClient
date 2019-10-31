@@ -1,29 +1,30 @@
-package br.com.otta.dbpokeapikotlinclient.type.ui
+package br.com.otta.dbpokeapikotlinclient.pokemon.list.ui
 
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.otta.dbpokeapikotlinclient.R
-
-import br.com.otta.dbpokeapikotlinclient.dummy.DummyContent.DummyItem
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonItem
-import br.com.otta.dbpokeapikotlinclient.type.adapter.PokemonTypeListAdapter
-import br.com.otta.dbpokeapikotlinclient.type.model.Type
+
+import br.com.otta.dbpokeapikotlinclient.pokemon.list.ui.dummy.DummyContent
+import br.com.otta.dbpokeapikotlinclient.pokemon.list.ui.dummy.DummyContent.DummyItem
 
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
- * [PokemonTypeListFragment.OnListFragmentInteractionListener] interface.
+ * [PokemonListFragment.OnListFragmentInteractionListener] interface.
  */
-class PokemonTypeListFragment : Fragment() {
+class PokemonListFragment : Fragment() {
 
     // TODO: Customize parameters
     private var columnCount = 1
-    private var pokemonTypeList: ArrayList<Type> = ArrayList()
+    private var pokemonList: ArrayList<PokemonItem> = ArrayList()
 
     private var listener: OnListFragmentInteractionListener? = null
 
@@ -32,7 +33,7 @@ class PokemonTypeListFragment : Fragment() {
 
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
-            pokemonTypeList = it.getParcelableArrayList(ARG_POKEMON_TYPE_LIST)
+            pokemonList = it.getParcelableArrayList(ARG_POKEMON_LIST)
         }
     }
 
@@ -40,22 +41,18 @@ class PokemonTypeListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_type_list, container, false)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.list)
-        recyclerView.adapter =
-            PokemonTypeListAdapter(pokemonTypeList, listener)
-        recyclerView.adapter?.notifyDataSetChanged()
+        val view = inflater.inflate(R.layout.fragment_pokemon_list, container, false)
 
         // Set the adapter
-        /*if (recyclerView is RecyclerView) {
-            with(recyclerView) {
+        if (view is RecyclerView) {
+            with(view) {
                 layoutManager = when {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = PokemonTypeListAdapter(pokemonTypeList, context, listener)
+                adapter = PokemonListAdapter(pokemonList, listener)
             }
-        }*/
+        }
         return view
     }
 
@@ -86,22 +83,22 @@ class PokemonTypeListFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: ArrayList<PokemonItem>)
+        fun onListFragmentInteraction(item: DummyItem?)
     }
 
     companion object {
 
         // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
-        const val ARG_POKEMON_TYPE_LIST = "pokemon-type-list"
+        const val ARG_POKEMON_LIST = "pokemon-list"
 
         // TODO: Customize parameter initialization
         @JvmStatic
-        fun newInstance(columnCount: Int, pokemonTypeList: ArrayList<Type>) =
-            PokemonTypeListFragment().apply {
+        fun newInstance(columnCount: Int, pokemonList: ArrayList<PokemonItem>) =
+            PokemonListFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
-                    putParcelableArrayList(ARG_POKEMON_TYPE_LIST, pokemonTypeList)
+                    putParcelableArrayList(ARG_POKEMON_LIST, pokemonList)
                 }
             }
     }
