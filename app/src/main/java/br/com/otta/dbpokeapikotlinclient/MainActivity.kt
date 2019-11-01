@@ -1,11 +1,13 @@
 package br.com.otta.dbpokeapikotlinclient
 
-import android.app.PendingIntent.getActivity
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.support.annotation.VisibleForTesting
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
 import br.com.otta.dbpokeapikotlinclient.configuration.RetrofitInitializer
 import br.com.otta.dbpokeapikotlinclient.pokemon.detail.ui.DetailsActivity
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonItem
@@ -24,14 +26,13 @@ class MainActivity : AppCompatActivity(), PokemonTypeListFragment.OnListFragment
 
     override fun openDetailsActivity(pokemonDetail: String) {
         val intent = Intent(this, DetailsActivity::class.java)
-        intent.putExtra("url", pokemonDetail)
-        this.startActivity(intent)
+        startActivityWithIntent(this, intent, pokemonDetail)
     }
 
     override fun updateFragmentContent(item: ArrayList<PokemonItem>) {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.main_fragment, PokemonListFragment.newInstance(1, item))
+            .add(R.id.main_fragment, PokemonListFragment.newInstance(item))
             .addToBackStack(BACK_STACK_TAG)
             .commit()
     }
@@ -41,36 +42,40 @@ class MainActivity : AppCompatActivity(), PokemonTypeListFragment.OnListFragment
         setContentView(R.layout.activity_main)
 
         val progressBar = type_list_progress
-        progressBar.visibility = View.VISIBLE
+        updateProgressBarVisibility(progressBar, View.VISIBLE)
         val call = RetrofitInitializer().typesService().list()
 
         call.enqueue(
             object : Callback<TypeResponse?> {
                 override fun onResponse(call: Call<TypeResponse?>?, response: Response<TypeResponse?>?) {
                     response?.body()?.let {
-                        progressBar.visibility = View.GONE
+                        updateProgressBarVisibility(progressBar, View.GONE)
                         val types : ArrayList<Type> = it.results
-                        //configureList(types)
 
                         if (savedInstanceState == null) {
                             supportFragmentManager
                                 .beginTransaction()
-                                .add(R.id.main_fragment, PokemonTypeListFragment.newInstance(1, types))
+                                .add(R.id.main_fragment, PokemonTypeListFragment.newInstance(types))
                                 .commit()
                         }
                     }
                 }
                 override fun onFailure(call: Call<TypeResponse?>?, t: Throwable) {
-                    progressBar.visibility = View.GONE
+                    updateProgressBarVisibility(progressBar, View.GONE)
                     Log.e("onFailure error", t?.message)
                 }
             })
     }
 
-    private fun configureList(types: List<Type>) {
-        //val recyclerView = type_list_recyclerview
-        //recyclerView.adapter = TypeListAdapter(types, this)
-        //val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
-        //recyclerView.layoutManager = layoutManager
+    @VisibleForTesting
+    fun startActivityWithIntent(activity: Activity, intent: Intent, pokemonUrl: String) {
+        intent.putExtra(DetailsActivity.URL_TAG, pokemonUrl)
+        activity.startActivity(intent)
+    }
+
+    @VisibleForTesting
+    fun updateProgressBarVisibility(progressBar: ProgressBar, visibility: Int): Int {
+        progressBar.visibility = visibility
+        return progressBar.visibility
     }
 }

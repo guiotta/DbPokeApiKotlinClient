@@ -1,4 +1,4 @@
-package br.com.otta.dbpokeapikotlinclient.pokemon.detail
+package br.com.otta.dbpokeapikotlinclient.pokemon.detail.service
 
 import br.com.otta.dbpokeapikotlinclient.pokemon.detail.model.PokemonDetailResponse
 import retrofit2.Call

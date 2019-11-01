@@ -1,6 +1,6 @@
 package br.com.otta.dbpokeapikotlinclient.configuration
 
-import br.com.otta.dbpokeapikotlinclient.pokemon.detail.PokemonDetailService
+import br.com.otta.dbpokeapikotlinclient.pokemon.detail.service.PokemonDetailService
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.service.PokemonListService
 import br.com.otta.dbpokeapikotlinclient.type.service.TypesService
 import retrofit2.Retrofit

@@ -20,18 +20,13 @@ import br.com.otta.dbpokeapikotlinclient.type.model.Type
  * [PokemonTypeListFragment.OnListFragmentInteractionListener] interface.
  */
 class PokemonTypeListFragment : Fragment() {
-
-    // TODO: Customize parameters
-    private var columnCount = 1
     private var pokemonTypeList: ArrayList<Type> = ArrayList()
-
     private var listener: OnListFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
             pokemonTypeList = it.getParcelableArrayList(ARG_POKEMON_TYPE_LIST)
         }
     }
@@ -67,17 +62,12 @@ class PokemonTypeListFragment : Fragment() {
     }
 
     companion object {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
         const val ARG_POKEMON_TYPE_LIST = "pokemon-type-list"
 
-        // TODO: Customize parameter initialization
         @JvmStatic
-        fun newInstance(columnCount: Int, pokemonTypeList: ArrayList<Type>) =
+        fun newInstance(pokemonTypeList: ArrayList<Type>) =
             PokemonTypeListFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
                     putParcelableArrayList(ARG_POKEMON_TYPE_LIST, pokemonTypeList)
                 }
             }
