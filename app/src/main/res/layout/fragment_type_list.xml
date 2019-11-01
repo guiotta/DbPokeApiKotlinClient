@@ -4,15 +4,23 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/type_name_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:text="@string/pokemon_types"/>
 
     <android.support.v7.widget.RecyclerView
             android:id="@+id/list"
             android:name="br.com.otta.dbpokeapikotlinclient.PokemonTypeListFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             app:layoutManager="LinearLayoutManager"
             tools:context=".type.ui.PokemonTypeListFragment"
             tools:listitem="@layout/fragment_type"/>

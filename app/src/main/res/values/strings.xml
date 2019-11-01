@@ -6,6 +6,7 @@
     <string name="label_weight">Weight:</string>
     <string name="label_abilities">Abilities:</string>
     <string name="send_to">Send to:</string>
+    <string name="pokemon_types">Pokemon types to select:</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
