@@ -6,6 +6,8 @@ import android.support.annotation.VisibleForTesting
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import br.com.otta.dbpokeapikotlinclient.R
 import br.com.otta.dbpokeapikotlinclient.configuration.RetrofitInitializer
@@ -26,6 +28,9 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(br.com.otta.dbpokeapikotlinclient.R.layout.activity_details)
         setSupportActionBar(toolbar)
 
+        val progressBar: ProgressBar = details_progress
+        progressBar.visibility = View.VISIBLE
+
         val url = intent.getStringExtra(URL_TAG)
         var pokemonResponse: PokemonDetailResponse? = PokemonDetailResponse();
 
@@ -33,6 +38,7 @@ class DetailsActivity : AppCompatActivity() {
 
         call.enqueue(object : Callback<PokemonDetailResponse> {
             override fun onFailure(call: Call<PokemonDetailResponse>, t: Throwable) {
+                progressBar.visibility = View.GONE
                 Log.e("onFailure error", t?.message)
             }
 
@@ -55,6 +61,8 @@ class DetailsActivity : AppCompatActivity() {
                         .resize(500, 500)
                         .centerCrop()
                         .into(imgPokemon)
+
+                    progressBar.visibility = View.GONE
                     Log.i("Pokemon response", it.toString())
                 }
             }
