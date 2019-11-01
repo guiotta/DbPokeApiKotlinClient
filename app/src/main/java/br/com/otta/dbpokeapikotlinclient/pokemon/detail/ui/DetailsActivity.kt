@@ -1,29 +1,23 @@
 package br.com.otta.dbpokeapikotlinclient.pokemon.detail.ui
 
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import br.com.otta.dbpokeapikotlinclient.R
 import br.com.otta.dbpokeapikotlinclient.configuration.RetrofitInitializer
 import br.com.otta.dbpokeapikotlinclient.pokemon.detail.model.PokemonDetailResponse
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.content_details.*
-import okhttp3.OkHttpClient
-import okhttp3.Request
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.IOException
-import android.os.Looper
-import android.graphics.BitmapFactory
-import android.graphics.Bitmap
-import android.os.Handler
-import android.support.v7.widget.LinearLayoutManager
-import com.squareup.picasso.Picasso
 
 
 class DetailsActivity : AppCompatActivity() {
+    val SHARE_TYPE: String = "text/plain"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +25,7 @@ class DetailsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val url = intent.getStringExtra("url")
+        var pokemonResponse: PokemonDetailResponse? = PokemonDetailResponse();
 
         val call = RetrofitInitializer().pokemonDetailService().call(url)
 
@@ -41,6 +36,7 @@ class DetailsActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<PokemonDetailResponse>, response: Response<PokemonDetailResponse>) {
                 response?.body()?.let {
+                    pokemonResponse = it;
                     val labelName = label_name_pokemon
                     val labelHeight = label_height_pokemon
                     val labelWeight = label_weight_pokemon
@@ -65,8 +61,11 @@ class DetailsActivity : AppCompatActivity() {
         })
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val shareIntent = Intent()
+            shareIntent.action = Intent.ACTION_SEND
+            shareIntent.type = SHARE_TYPE
+            shareIntent.putExtra(Intent.EXTRA_TEXT, pokemonResponse?.toShareContent());
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.send_to)))
         }
     }
 }
