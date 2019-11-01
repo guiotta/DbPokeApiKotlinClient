@@ -19,6 +19,8 @@ import android.os.Looper
 import android.graphics.BitmapFactory
 import android.graphics.Bitmap
 import android.os.Handler
+import android.support.v7.widget.LinearLayoutManager
+import com.squareup.picasso.Picasso
 
 
 class DetailsActivity : AppCompatActivity() {
@@ -43,30 +45,20 @@ class DetailsActivity : AppCompatActivity() {
                     val labelHeight = label_height_pokemon
                     val labelWeight = label_weight_pokemon
                     val imgPokemon = pokemon_img
+                    val abilitiesList = abilities_list
 
                     labelName.text = it.name
                     labelHeight.text = it.height.toString()
                     labelWeight.text = it.weight.toString()
 
-                    val request = Request.Builder().url(it.sprites.front_default).build()
-                    val call = OkHttpClient.Builder().build().newCall(request)
-                    call.enqueue(
-                        object : okhttp3.Callback {
-                            override fun onFailure(call: okhttp3.Call, e: IOException) {
-                            }
+                    abilitiesList.layoutManager = LinearLayoutManager(this@DetailsActivity)
+                    abilitiesList.adapter = AbilityListAdapter(it.abilities, this@DetailsActivity)
 
-                            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
-                                if (response.isSuccessful) {
-                                    val bitmap = BitmapFactory.decodeStream(response.body()?.byteStream())
-                                    // Remember to set the bitmap in the main thread.
-                                    Handler(Looper.getMainLooper()).post(Runnable { imgPokemon.setImageBitmap(bitmap) })
-                                } else {
-                                    //Handle the error
-                                }
-                            }
-
-                        }
-                    )
+                    Picasso.get()
+                        .load(it.sprites.front_default)
+                        .resize(500, 500)
+                        .centerCrop()
+                        .into(imgPokemon)
                     Log.i("Pokemon response", it.toString())
                 }
             }
