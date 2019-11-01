@@ -4,7 +4,6 @@ import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonItem
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)

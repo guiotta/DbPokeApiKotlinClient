@@ -2,6 +2,7 @@ package br.com.otta.dbpokeapikotlinclient.type.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.support.annotation.VisibleForTesting
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -20,7 +21,8 @@ import br.com.otta.dbpokeapikotlinclient.type.model.Type
  * [PokemonTypeListFragment.OnListFragmentInteractionListener] interface.
  */
 class PokemonTypeListFragment : Fragment() {
-    private var pokemonTypeList: ArrayList<Type> = ArrayList()
+    @VisibleForTesting
+    var pokemonTypeList: ArrayList<Type> = ArrayList()
     private var listener: OnListFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
