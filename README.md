@@ -16,4 +16,4 @@ Terminando esta busca, será montada uma nova tela de listagem, com todos os Pok
 Selecionando um item desta lista de Pokemon, será aberta uma tela de detalhamento, com informações sobre o nome, tamanho, peso, imagem e habilidades do Pokemon. Nesta tela de detalhamento, será possível compartilhar as informações outras aplicações sociais instaladas no aparelho celular do usuário.
 
 ## Informações técnicas sobre o build
-O prjeto foi desenvolvido utilizando a minSdkVersion 26 (Android 8.0) e o targetSdkVersion 28 (Android 9.0).
+O projeto foi desenvolvido utilizando a minSdkVersion 26 (Android 8.0) e o targetSdkVersion 28 (Android 9.0).
