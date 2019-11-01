@@ -43,17 +43,10 @@ class PokemonListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_pokemon_list, container, false)
+        val recycler = view.findViewById<RecyclerView>(R.id.list)
+        recycler.layoutManager = LinearLayoutManager(context)
+        recycler.adapter = PokemonListAdapter(pokemonList, listener)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = PokemonListAdapter(pokemonList, listener)
-            }
-        }
         return view
     }
 

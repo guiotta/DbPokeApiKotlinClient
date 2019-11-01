@@ -3,13 +3,13 @@ package br.com.otta.dbpokeapikotlinclient.type.ui
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.otta.dbpokeapikotlinclient.R
 
-import br.com.otta.dbpokeapikotlinclient.dummy.DummyContent.DummyItem
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonItem
 import br.com.otta.dbpokeapikotlinclient.type.adapter.PokemonTypeListAdapter
 import br.com.otta.dbpokeapikotlinclient.type.model.Type
@@ -42,20 +42,9 @@ class PokemonTypeListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_type_list, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.list)
-        recyclerView.adapter =
-            PokemonTypeListAdapter(pokemonTypeList, listener)
-        recyclerView.adapter?.notifyDataSetChanged()
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = PokemonTypeListAdapter(pokemonTypeList, listener)
 
-        // Set the adapter
-        /*if (recyclerView is RecyclerView) {
-            with(recyclerView) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = PokemonTypeListAdapter(pokemonTypeList, context, listener)
-            }
-        }*/
         return view
     }
 

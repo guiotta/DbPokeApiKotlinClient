@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="wrap_content"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:orientation="horizontal">
+              android:paddingVertical="@dimen/item_vertical_padding"
+              android:paddingHorizontal="@dimen/item_horizontal_padding"
+              android:orientation="vertical"
+              android:background="?android:attr/selectableItemBackground">
 
     <TextView
             android:id="@+id/pokemon_name_item"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem"/>
+            android:textSize="@dimen/text_size"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/separator_height"
+            android:background="@android:color/darker_gray"/>
 
 </LinearLayout>
