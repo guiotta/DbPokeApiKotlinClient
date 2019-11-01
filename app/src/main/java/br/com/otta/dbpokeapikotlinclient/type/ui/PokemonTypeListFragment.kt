@@ -60,7 +60,7 @@ class PokemonTypeListFragment : Fragment() {
     }
 
     interface OnListFragmentInteractionListener {
-        fun updateFragmentContent(item: ArrayList<PokemonItem>)
+        fun updateFragmentContent(pokemonListUrl: String)
     }
 
     companion object {

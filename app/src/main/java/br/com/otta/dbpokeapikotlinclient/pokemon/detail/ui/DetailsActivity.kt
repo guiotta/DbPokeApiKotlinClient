@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import br.com.otta.dbpokeapikotlinclient.R
 import br.com.otta.dbpokeapikotlinclient.configuration.RetrofitInitializer
 import br.com.otta.dbpokeapikotlinclient.pokemon.detail.model.PokemonDetailResponse
@@ -39,6 +40,7 @@ class DetailsActivity : AppCompatActivity() {
         call.enqueue(object : Callback<PokemonDetailResponse> {
             override fun onFailure(call: Call<PokemonDetailResponse>, t: Throwable) {
                 progressBar.visibility = View.GONE
+                Toast.makeText(this@DetailsActivity, R.string.network_error, Toast.LENGTH_LONG).show()
                 Log.e("onFailure error", t?.message)
             }
 

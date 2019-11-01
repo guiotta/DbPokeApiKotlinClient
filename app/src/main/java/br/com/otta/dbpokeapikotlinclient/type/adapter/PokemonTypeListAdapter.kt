@@ -45,22 +45,7 @@ class PokemonTypeListAdapter(private val types: List<Type>, private val mListene
             name.text = type.name
 
             itemView.setOnClickListener {
-                val call = RetrofitInitializer().pokemonListService().list(type.url);
-                call.enqueue(
-                    object : Callback<PokemonListResponse> {
-                        override fun onFailure(call: Call<PokemonListResponse>, t: Throwable) {
-                            Log.e("onFailure error", t?.message)
-                        }
-
-                        override fun onResponse(call: Call<PokemonListResponse>, response: Response<PokemonListResponse>) {
-                            response?.body()?.let {
-                                Log.i("Pokemon response", it.toString())
-                                val pokemonListResponse = it.pokemon;
-                                mListener?.updateFragmentContent(pokemonListResponse)
-                            }
-                        }
-                    }
-                )
+                mListener?.updateFragmentContent(type.url)
             }
         }
     }

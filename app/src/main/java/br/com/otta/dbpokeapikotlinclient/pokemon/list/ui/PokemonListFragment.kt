@@ -6,11 +6,18 @@ import android.support.annotation.VisibleForTesting
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.Toast
 import br.com.otta.dbpokeapikotlinclient.R
-import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonItem
+import br.com.otta.dbpokeapikotlinclient.configuration.RetrofitInitializer
+import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonListResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * A fragment representing a list of Items.
@@ -19,14 +26,14 @@ import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonItem
  */
 class PokemonListFragment : Fragment() {
     @VisibleForTesting
-    var pokemonList: ArrayList<PokemonItem> = ArrayList()
+    var pokemonListUrl: String = ""
     private var listener: OnListFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            pokemonList = it.getParcelableArrayList(ARG_POKEMON_LIST)
+            pokemonListUrl = it.getString(ARG_POKEMON_URL)
         }
     }
 
@@ -36,8 +43,29 @@ class PokemonListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_pokemon_list, container, false)
         val recycler = view.findViewById<RecyclerView>(R.id.list)
-        recycler.layoutManager = LinearLayoutManager(context)
-        recycler.adapter = PokemonListAdapter(pokemonList, listener)
+
+        val progress = view.findViewById<ProgressBar>(R.id.pokemon_list_progress)
+        progress.visibility = View.VISIBLE
+
+        val call = RetrofitInitializer().pokemonListService().list(pokemonListUrl);
+        call.enqueue(
+            object : Callback<PokemonListResponse> {
+                override fun onFailure(call: Call<PokemonListResponse>, t: Throwable) {
+                    Toast.makeText(view.context, R.string.network_error, Toast.LENGTH_LONG).show()
+                    progress.visibility = View.GONE
+                    Log.e("onFailure error", t?.message)
+                }
+
+                override fun onResponse(call: Call<PokemonListResponse>, response: Response<PokemonListResponse>) {
+                    response?.body()?.let {
+                        Log.i("Pokemon response", it.toString())
+                        recycler.layoutManager = LinearLayoutManager(context)
+                        recycler.adapter = PokemonListAdapter(it.pokemon, listener)
+                        progress.visibility = View.GONE
+                    }
+                }
+            }
+        )
 
         return view
     }
@@ -61,13 +89,13 @@ class PokemonListFragment : Fragment() {
     }
 
     companion object {
-        const val ARG_POKEMON_LIST = "pokemon-list"
+        const val ARG_POKEMON_URL = "pokemon-url"
 
         @JvmStatic
-        fun newInstance(pokemonList: ArrayList<PokemonItem>) =
+        fun newInstance(pokemonUrl: String) =
             PokemonListFragment().apply {
                 arguments = Bundle().apply {
-                    putParcelableArrayList(ARG_POKEMON_LIST, pokemonList)
+                    putString(ARG_POKEMON_URL, pokemonUrl)
                 }
             }
     }

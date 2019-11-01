@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 import br.com.otta.dbpokeapikotlinclient.configuration.RetrofitInitializer
 import br.com.otta.dbpokeapikotlinclient.pokemon.detail.ui.DetailsActivity
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonItem
@@ -29,10 +30,10 @@ class MainActivity : AppCompatActivity(), PokemonTypeListFragment.OnListFragment
         startActivityWithIntent(this, intent, pokemonDetail)
     }
 
-    override fun updateFragmentContent(item: ArrayList<PokemonItem>) {
+    override fun updateFragmentContent(pokemonListUrl: String) {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.main_fragment, PokemonListFragment.newInstance(item))
+            .add(R.id.main_fragment, PokemonListFragment.newInstance(pokemonListUrl))
             .addToBackStack(BACK_STACK_TAG)
             .commit()
     }
@@ -62,6 +63,7 @@ class MainActivity : AppCompatActivity(), PokemonTypeListFragment.OnListFragment
                 }
                 override fun onFailure(call: Call<TypeResponse?>?, t: Throwable) {
                     updateProgressBarVisibility(progressBar, View.GONE)
+                    Toast.makeText(this@MainActivity, R.string.network_error, Toast.LENGTH_LONG).show()
                     Log.e("onFailure error", t?.message)
                 }
             })
