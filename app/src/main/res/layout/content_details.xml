@@ -10,70 +10,63 @@
         tools:context=".pokemon.detail.ui.DetailsActivity">
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/default_lateral_margin"
+            android:layout_marginRight="@dimen/default_lateral_margin">
 
         <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 tools:srcCompat="@tools:sample/avatars"
-                app:layout_constraintBottom_toTopOf="@+id/label_name"
+                app:layout_constraintBottom_toTopOf="@+id/pokemon_details_table"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
                 android:id="@+id/pokemon_img"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+        <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:layout_constraintTop_toBottomOf="@+id/pokemon_img"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/label_name"
-                android:textSize="@dimen/text_size"
-                android:id="@+id/label_name"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/pokemon_img"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/label_name_pokemon"
-                android:textSize="@dimen/text_size"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/label_name"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/label_height"
-                android:textSize="@dimen/text_size"
-                android:id="@+id/label_height"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/label_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/label_height_pokemon"
-                android:textSize="@dimen/text_size"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/label_height"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/label_weight"
-                android:textSize="@dimen/text_size"
-                android:id="@+id/label_weight"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/label_height"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/label_weight_pokemon"
-                android:textSize="@dimen/text_size"/>
+                android:id="@+id/pokemon_details_table"
+                android:stretchColumns="0, 1">
+
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView
+                        android:text="@string/label_name"
+                        android:textSize="@dimen/text_size"
+                        android:id="@+id/label_name"/>
+                <TextView
+                        android:id="@+id/label_name_pokemon"
+                        android:textSize="@dimen/text_size"/>
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView
+                        android:text="@string/label_height"
+                        android:textSize="@dimen/text_size"
+                        android:id="@+id/label_height"/>
+                <TextView
+                        android:id="@+id/label_height_pokemon"
+                        android:textSize="@dimen/text_size"/>
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView
+                        android:text="@string/label_weight"
+                        android:textSize="@dimen/text_size"
+                        android:id="@+id/label_weight"/>
+                <TextView
+                        android:id="@+id/label_weight_pokemon"
+                        android:textSize="@dimen/text_size"/>
+            </TableRow>
+        </TableLayout>
 
         <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/separator_height"
                 android:background="@android:color/darker_gray"
                 android:layout_marginTop="@dimen/ability_margin_top_separator"
-                app:layout_constraintTop_toBottomOf="@+id/label_weight"
+                app:layout_constraintTop_toBottomOf="@+id/pokemon_details_table"
                 app:layout_constraintStart_toStartOf="parent"
                 android:id="@+id/separator_abilities"/>
 

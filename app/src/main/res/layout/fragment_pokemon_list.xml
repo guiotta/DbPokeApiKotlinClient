@@ -20,8 +20,8 @@
             android:name="br.com.otta.dbpokeapikotlinclient.pokemon.list.ui.PokemonListFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="@dimen/default_lateral_margin"
+            android:layout_marginRight="@dimen/default_lateral_margin"
             app:layoutManager="LinearLayoutManager"
             tools:context=".pokemon.list.ui.PokemonListFragment"
             tools:listitem="@layout/fragment_pokemon"/>
