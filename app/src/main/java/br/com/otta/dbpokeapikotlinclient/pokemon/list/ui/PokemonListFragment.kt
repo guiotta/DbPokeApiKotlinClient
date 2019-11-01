@@ -3,18 +3,13 @@ package br.com.otta.dbpokeapikotlinclient.pokemon.list.ui
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.otta.dbpokeapikotlinclient.R
-import br.com.otta.dbpokeapikotlinclient.pokemon.detail.model.PokemonDetailResponse
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonItem
-
-import br.com.otta.dbpokeapikotlinclient.pokemon.list.ui.dummy.DummyContent
-import br.com.otta.dbpokeapikotlinclient.pokemon.list.ui.dummy.DummyContent.DummyItem
 
 /**
  * A fragment representing a list of Items.
@@ -64,20 +59,7 @@ class PokemonListFragment : Fragment() {
         listener = null
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson
-     * [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
         fun openDetailsActivity(pokemonDetail: String)
     }
 

@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import br.com.otta.dbpokeapikotlinclient.type.ui.PokemonTypeListFragment.OnListFragmentInteractionListener
 import br.com.otta.dbpokeapikotlinclient.R
 import br.com.otta.dbpokeapikotlinclient.configuration.RetrofitInitializer
-import br.com.otta.dbpokeapikotlinclient.dummy.DummyContent.DummyItem
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonListResponse
 import br.com.otta.dbpokeapikotlinclient.type.model.Type
 
@@ -24,15 +23,6 @@ import retrofit2.Response
  * TODO: Replace the implementation with code for your data type.
  */
 class PokemonTypeListAdapter(private val types: List<Type>, private val mListener: OnListFragmentInteractionListener?) : RecyclerView.Adapter<PokemonTypeListAdapter.ViewHolder>() {
-
-    private val mOnClickListener: View.OnClickListener
-
-    init {
-        mOnClickListener = View.OnClickListener { v ->
-            //val item = v.tag as DummyItem
-            //mListener?.updateFragmentContent(item)
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_type, parent, false)

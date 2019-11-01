@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import br.com.otta.dbpokeapikotlinclient.R
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.model.PokemonItem
 
-
 import br.com.otta.dbpokeapikotlinclient.pokemon.list.ui.PokemonListFragment.OnListFragmentInteractionListener
-import br.com.otta.dbpokeapikotlinclient.pokemon.list.ui.dummy.DummyContent.DummyItem
 
 import kotlinx.android.synthetic.main.fragment_pokemon.view.*
 
@@ -22,17 +20,6 @@ class PokemonListAdapter(
     private val pokemonItens: List<PokemonItem>,
     private val mListener: OnListFragmentInteractionListener?
 ) : RecyclerView.Adapter<PokemonListAdapter.ViewHolder>() {
-
-    private val mOnClickListener: View.OnClickListener
-
-    init {
-        mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as DummyItem
-            // Notify the active callbacks interface (the activity, if the fragment is attached to
-            // one) that an item has been selected.
-            mListener?.onListFragmentInteraction(item)
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
