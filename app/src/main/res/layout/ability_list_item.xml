@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              android:paddingVertical="@dimen/item_vertical_padding"
+              android:paddingHorizontal="@dimen/item_horizontal_padding">
 
     <TextView
             android:id="@+id/ability_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:padding="20dp"/>
+            android:textSize="@dimen/text_size"/>
 
 </LinearLayout>

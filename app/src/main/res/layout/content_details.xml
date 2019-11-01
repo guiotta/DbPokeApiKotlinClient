@@ -28,7 +28,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/pokemon_img"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/label_name"
-                android:ems="10"
+                android:textSize="@dimen/text_size"
                 android:id="@+id/label_name"/>
         <TextView
                 android:layout_width="wrap_content"
@@ -36,14 +36,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/pokemon_img"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/label_name_pokemon"
-                android:text="TextView"/>
+                android:textSize="@dimen/text_size"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/label_name"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/label_height"
-                android:ems="10"
+                android:textSize="@dimen/text_size"
                 android:id="@+id/label_height"/>
         <TextView
                 android:layout_width="wrap_content"
@@ -51,14 +51,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/label_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/label_height_pokemon"
-                android:text="TextView"/>
+                android:textSize="@dimen/text_size"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/label_height"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/label_weight"
-                android:ems="10"
+                android:textSize="@dimen/text_size"
                 android:id="@+id/label_weight"/>
         <TextView
                 android:layout_width="wrap_content"
@@ -66,14 +66,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/label_height"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/label_weight_pokemon"
-                android:text="TextView"/>
+                android:textSize="@dimen/text_size"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/separator_height"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="@dimen/ability_margin_top_separator"
+                app:layout_constraintTop_toBottomOf="@+id/label_weight"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/separator_abilities"/>
+
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/label_weight"
+                app:layout_constraintTop_toBottomOf="@+id/separator_abilities"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/label_abilities"
-                android:ems="10"
+                android:textSize="@dimen/text_size"
                 android:id="@+id/label_abilities"/>
 
         <android.support.v7.widget.RecyclerView
@@ -81,7 +91,7 @@
                 android:layout_height="match_parent"
                 android:isScrollContainer="false"
                 android:id="@+id/abilities_list"
-                app:layout_constraintTop_toBottomOf="@+id/label_weight"
+                app:layout_constraintTop_toBottomOf="@+id/label_abilities"
                 app:layout_constraintEnd_toEndOf="parent"
         />
     </android.support.constraint.ConstraintLayout>
