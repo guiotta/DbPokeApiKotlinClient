@@ -21,6 +21,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * Activity inicial da aplicação.
+ * Os fragmentos de lista de tipos e lista de pokemons de um determinado tipo serão montados dentro desta activity.
+ */
 class MainActivity : AppCompatActivity(), PokemonTypeListFragment.OnListFragmentInteractionListener,
     PokemonListFragment.OnListFragmentInteractionListener {
     val BACK_STACK_TAG: String = "pokemonListTag"

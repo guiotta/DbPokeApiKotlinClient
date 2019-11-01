@@ -20,7 +20,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
+/**
+ * Activity separada para controlar a apresentação dos detalhes de um Pokemon.
+ */
 class DetailsActivity : AppCompatActivity() {
     val SHARE_TYPE: String = "text/plain"
 

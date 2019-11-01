@@ -20,9 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [PokemonListFragment.OnListFragmentInteractionListener] interface.
+ * Fragmento para controlar a  exibição da lista de Pokemon de um determinado tipo.
  */
 class PokemonListFragment : Fragment() {
     @VisibleForTesting

@@ -9,6 +9,9 @@ import br.com.otta.dbpokeapikotlinclient.R
 import br.com.otta.dbpokeapikotlinclient.pokemon.detail.model.AbilityItem
 import kotlinx.android.synthetic.main.ability_list_item.view.*
 
+/**
+ * Classe com os comportamentos para o adapter contendo a lista de habilidades de um Pokemon, exibida na tela de detalhes.
+ */
 class AbilityListAdapter (val items : List<AbilityItem>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
     override fun getItemCount(): Int {
         return items.size

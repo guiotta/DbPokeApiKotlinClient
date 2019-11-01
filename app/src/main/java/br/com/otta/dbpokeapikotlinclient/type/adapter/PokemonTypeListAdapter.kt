@@ -18,9 +18,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
+ * Classe com os comportamentos para o adapter contendo a lista de tipos de Pokemon, exibida em uma listagem própria.
  */
 class PokemonTypeListAdapter(private val types: List<Type>, private val mListener: OnListFragmentInteractionListener?) : RecyclerView.Adapter<PokemonTypeListAdapter.ViewHolder>() {
 

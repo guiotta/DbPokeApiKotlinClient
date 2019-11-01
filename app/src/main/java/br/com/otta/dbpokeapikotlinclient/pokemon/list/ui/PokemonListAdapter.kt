@@ -12,9 +12,7 @@ import br.com.otta.dbpokeapikotlinclient.pokemon.list.ui.PokemonListFragment.OnL
 import kotlinx.android.synthetic.main.fragment_pokemon.view.*
 
 /**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
+ * Classe com os comportamentos para o adapter contendo a lista de Pokemon de um determinado tipo, exibida em uma listagem própria.
  */
 class PokemonListAdapter(
     private val pokemonItens: List<PokemonItem>,

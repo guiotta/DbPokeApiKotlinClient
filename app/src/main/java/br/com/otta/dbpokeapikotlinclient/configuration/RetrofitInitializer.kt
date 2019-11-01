@@ -6,6 +6,9 @@ import br.com.otta.dbpokeapikotlinclient.type.service.TypesService
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 
+/**
+ * Classe utilizando Retrofit para simplificar o acesso ao dados mantidos pela API do PokeAPI.
+ */
 class RetrofitInitializer {
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://pokeapi.co/api/v2/")

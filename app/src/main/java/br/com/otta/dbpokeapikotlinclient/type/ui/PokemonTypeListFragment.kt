@@ -16,9 +16,7 @@ import br.com.otta.dbpokeapikotlinclient.type.adapter.PokemonTypeListAdapter
 import br.com.otta.dbpokeapikotlinclient.type.model.Type
 
 /**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [PokemonTypeListFragment.OnListFragmentInteractionListener] interface.
+ * Fragmento para controlar a exibição da lista de Tipos de Pokemon exibida ao inciar a aplicação.
  */
 class PokemonTypeListFragment : Fragment() {
     @VisibleForTesting
